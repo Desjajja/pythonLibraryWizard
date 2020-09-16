@@ -1,0 +1,27 @@
+交互式图书馆查询系统：一个图形化，互动式的简易图书资源查询程序
+
+测试运行环境：Windows10，Python 3.7(anaconda) 
+
+主要功能：对用户输入的字符串进行处理，并根据其内容以对话形式返回
+包括书籍信息，特定馆藏地藏书的内容。
+
+特色：接入了baidu-aip SDK的相关功能，实现了简单的语音对话；拥有一
+个简洁的界面，包含了用户登录界面。
+
+结构：包含数据传入，数据I/O处理、GUI三部分
+
+主要函数： find_book(bookName,src=graph,output=dict)---查询neo4j
+中预先储存好的图书数据，并根据output的类型返回节点属性Name为指定内容
+的图书信息
+	find_site(siteName,src=graph,output=dict)---与上述函数类似，
+返回馆藏地信息
+	site_storage(siteName,src=graph,Num=15)---返回指定节点的一定量
+书籍（默认数值15）
+	book_name_search(elementDict,input)---对value为分词列表的字典进行
+相似度排序（降序），返回书名列表。
+
+语音功能实现：
+	调用Baidu-aip 的语音识别模块和图灵机器人的语义理解功能实现了对话。
+并可以通过指定词语（“再见”）结束该功能。
+
+GUI实现：借助PyQT5的相关对象搭建了一个具有基础功能的聊天窗口
